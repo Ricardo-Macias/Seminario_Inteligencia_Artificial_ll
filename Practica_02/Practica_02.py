@@ -18,7 +18,7 @@ models = {'DT':DecisionTreeClassifier(max_depth=7),
 dataset = pd.read_csv('Practica_02/loan_prediction.csv')
 
 x = np.array(dataset.drop(columns=['Loan_Status']))
-y = np.array(dataset[['Load_Status']])
+y = np.array(dataset[['Loan_Status']])
 
 x = StandardScaler().fit_transform(x)
 
@@ -29,8 +29,23 @@ score_test = []
 
 for count in models:
     model = models[count]
-    model.fit(xtrain, ytrain)
+    model.fit(xtrain, ytrain.ravel())
 
-    score_train.append(model.score(xtrain, ytrain))
-    score_test.append(model.score(xtest, ytest))
+    score_train.append(model.score(xtrain, ytrain.ravel()))
+    score_test.append(model.score(xtest, ytest.ravel()))
 
+# Crear grafica de barra --------------------------------
+labels = ['DT','KNN','MLP','NB']
+cor = np.arange(len(score_train))
+width = 0.30
+
+fig, ax = plt.subplots()
+ax.bar(cor - width/2, score_train, width, label="Train")
+ax.bar(cor + width/2, score_test, width, label="Test")
+
+ax.set_title('Practica 02')
+ax.set_xticks(cor)
+ax.set_xticklabels(labels)
+
+plt.legend()
+plt.show()
