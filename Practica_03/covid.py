@@ -13,9 +13,7 @@ covid_dataset = pd.read_csv('Practica_03/Covid Dataset.csv')
 new_dataset = pd.get_dummies(covid_dataset, 
                                     drop_first=True)
 
-# Limpia
-
-
+# Seleccionar modelo
 x = np.array(new_dataset.drop(columns=['COVID-19_Yes']))
 y = np.array(new_dataset[['COVID-19_Yes']])
 
