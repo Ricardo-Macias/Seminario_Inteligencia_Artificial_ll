@@ -32,16 +32,6 @@
 
 ### Actividad 15
 
-### Actividad 16
-
-### Actividad 17
-
-### Actividad 18
-
-### Actividad 19
-
-### Actividad 20
-
 ## Practicas
 
 ### Practica 1
